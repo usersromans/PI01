@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 import pandas as pd
-import numpy as np
 import zipfile
 import os
+import shutil
+import numpy as np
 
 app = FastAPI()
 
@@ -12,14 +13,17 @@ temp_dir = './data/temp'
 # Asegurarse de que el directorio temporal existe
 os.makedirs(temp_dir, exist_ok=True)
 
-# Función para extraer archivos CSV de un archivo ZIP
+# Función para extraer archivos CSV de un archivo ZIP y cargarlos en un DataFrame
 def extract_csv_from_zip(zip_path, temp_dir, csv_file_name):
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(temp_dir)
-    return pd.read_csv(os.path.join(temp_dir, csv_file_name))
+    csv_path = os.path.join(temp_dir, csv_file_name)
+    df = pd.read_csv(csv_path)
+    # Opcional: eliminar el archivo CSV después de cargarlo para ahorrar espacio
+    os.remove(csv_path)
+    return df
 
-
-import shutil
+# Función para limpiar el directorio temporal después de cargar todos los archivos necesarios
 def clean_up_temp_dir():
     if os.path.exists(temp_dir):
         shutil.rmtree(temp_dir)
@@ -32,12 +36,8 @@ zip_path_reviews = './data/data_reviews.zip'
 data_plays_df = extract_csv_from_zip(zip_path_plays, temp_dir, 'data_plays.csv')
 data_reviews_df = extract_csv_from_zip(zip_path_reviews, temp_dir, 'data_reviews.csv')
 
-
-app = FastAPI()
-
-# Carga inicial de DataFrames
-data_plays_df = data_plays_df
-data_reviews_df = data_reviews_df
+# Limpieza del directorio temporal después de cargar los DataFrames
+clean_up_temp_dir()
 
 @app.get("/")
 async def read_root():
