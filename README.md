@@ -1,68 +1,33 @@
-# PI1_MLOps
+# Sistema de Recomendación y API FastAPI
 
-## Descripción
-Este proyecto implementa una API con FastAPI para proporcionar datos y análisis sobre juegos, desarrolladores y usuarios. Incluye funcionalidades como el análisis de sentimientos de reseñas de usuarios y recomendaciones personalizadas basadas en datos históricos.
+Este proyecto implementa una API desarrollada con FastAPI que proporciona información sobre videojuegos, incluyendo recomendaciones basadas en el análisis de reseñas de usuarios. Utiliza varios conjuntos de datos para ofrecer diferentes endpoints que permiten acceder a información específica sobre desarrolladores, usuarios, géneros de juegos, y recomendaciones de juegos.
 
 ## Características
-- Desarrollado con FastAPI.
-- Análisis de sentimientos en reseñas de juegos.
-- Información detallada sobre juegos, desarrolladores, y usuarios.
-- Desplegado en Render.
+
+- **Información del Desarrollador**: Retorna información sobre juegos desarrollados por una compañía específica, incluyendo cantidad de ítems y porcentaje de contenido gratuito por año.
+- **Datos de Usuario**: Proporciona información sobre el gasto total de un usuario, porcentaje de recomendaciones y cantidad de ítems adquiridos.
+- **Usuario por Género**: Muestra el usuario con más horas jugadas por género y una lista de horas jugadas por año de lanzamiento.
+- **Mejores Desarrolladores por Año**: Lista los top 3 desarrolladores con más reseñas positivas en un año específico.
+- **Análisis de Reseñas por Desarrollador**: Ofrece un análisis de sentimiento de las reseñas (positivas y negativas) asociadas a los juegos de un desarrollador.
+- **Recomendaciones de Juegos**: Basado en un modelo de recomendación ítem-ítem, sugiere juegos similares a uno dado.
 
 ## Instalación
 
-Para clonar e instalar las dependencias del proyecto, sigue estos pasos:
+Este proyecto está desplegado y accesible en línea, por lo que no es necesario instalar nada localmente para interactuar con la API. Puedes acceder a la documentación interactiva y probar los endpoints directamente en la siguiente URL:
 
-git clone https://tu-repositorio-aqui.git
-cd PI1_MLOps
-pip install -r requirements.txt
-
+- **URL del Despliegue**: [https://pi01-usersromans1.onrender.com/docs](https://pi01-usersromans1.onrender.com/docs)
 
 ## Uso
 
-Para ejecutar la aplicación localmente:
+Accede a la documentación interactiva de la API en el enlace anterior para una guía completa sobre cómo usar cada endpoint.
 
-uvicorn main:app --reload
+## Video Explicativo
 
+Para una introducción y demostración del proyecto, mira nuestro video en YouTube:
 
-Navega a `http://localhost:8000` para acceder a la documentación de la API generada por Swagger UI.
+- **Enlace al Video**: [Pon aquí el enlace a YouTube](#)
 
-## Endpoints
+## Notas Adicionales
 
-### `/developer/{developer_name}`
-
-Devuelve la cantidad de items y el porcentaje de contenido gratuito por año para un desarrollador específico.
-
-### `/userdata/{user_id}`
-
-Muestra la cantidad de dinero gastado, el porcentaje de recomendación, y la cantidad de items para un usuario específico.
-
-### `/user_for_genre/{genre}`
-
-Identifica al usuario con más horas jugadas en un género específico y detalla las horas jugadas por año de lanzamiento.
-
-### `/best_developer_year/{year}`
-
-Lista el top 3 de desarrolladores con juegos más recomendados por los usuarios para un año específico.
-
-### `/developer_reviews_analysis/{developer_name}`
-
-Analiza las reseñas de juegos de un desarrollador específico, contando reseñas positivas y negativas.
-
-## Despliegue
-
-Para desplegar en Render:
-
-1. Regístrate y conecta tu repositorio en Render.
-2. Sigue las instrucciones para configurar el servicio web.
-3. Usa la URL proporcionada por Render para acceder a tu API en producción.
-
-## Contribuir
-
-Para contribuir al proyecto:
-
-- Haz un fork del repositorio.
-- Crea una rama para tu nueva característica.
-- Realiza tus cambios y haz commit.
-- Envía un Pull Request desde tu fork.
-
+- Este proyecto es un MVP (Producto Mínimo Viable) y puede requerir ajustes adicionales para producción.
+- Las contribuciones son bienvenidas. Por favor, envía un Pull Request o abre un Issue para discutir los cambios o mejoras propuestas.
