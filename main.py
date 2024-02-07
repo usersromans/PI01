@@ -7,37 +7,16 @@ import numpy as np
 
 app = FastAPI()
 
-# Directorio temporal para extraer los archivos
-temp_dir = './data/temp'
+# Asumiendo que los archivos Parquet ya están disponibles en el directorio 'data'
+# y ya no necesitas extraerlos de un ZIP.
+data_plays_path = './data/data_plays.parquet'
+data_reviews_path = './data/data_reviews.parquet'
 
-# Asegurarse de que el directorio temporal existe
-os.makedirs(temp_dir, exist_ok=True)
+# Carga directa de DataFrames desde archivos Parquet
+data_plays_df = pd.read_parquet(data_plays_path)
+data_reviews_df = pd.read_parquet(data_reviews_path)
 
-# Función para extraer archivos CSV de un archi vo ZIP y cargarlos en un DataFrame
-def extract_csv_from_zip(zip_path, temp_dir, csv_file_name):
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(temp_dir)
-    csv_path = os.path.join(temp_dir, csv_file_name)
-    df = pd.read_csv(csv_path)
-    # Opcional: eliminar el archivo CSV después de cargarlo para ahorrar espacio
-    os.remove(csv_path)
-    return df
 
-# Función para limpiar el directorio temporal después de cargar todos los archivos necesarios
-def clean_up_temp_dir():
-    if os.path.exists(temp_dir):
-        shutil.rmtree(temp_dir)
-
-# Rutas a los archivos ZIP
-zip_path_plays = './data/data_plays.zip'
-zip_path_reviews = './data/data_reviews.zip'
-
-# Carga inicial de DataFrames con los archivos descomprimidos
-data_plays_df = extract_csv_from_zip(zip_path_plays, temp_dir, 'data_plays.csv')
-data_reviews_df = extract_csv_from_zip(zip_path_reviews, temp_dir, 'data_reviews.csv')
-
-# Limpieza del directorio temporal después de cargar los DataFrames
-clean_up_temp_dir()
 
 @app.get("/")
 async def read_root():
