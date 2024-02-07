@@ -13,7 +13,7 @@ temp_dir = './data/temp'
 # Asegurarse de que el directorio temporal existe
 os.makedirs(temp_dir, exist_ok=True)
 
-# Función para extraer archivos CSV de un archivo ZIP y cargarlos en un DataFrame
+# Función para extraer archivos CSV de un archi vo ZIP y cargarlos en un DataFrame
 def extract_csv_from_zip(zip_path, temp_dir, csv_file_name):
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(temp_dir)
