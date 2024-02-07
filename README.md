@@ -1,33 +1,53 @@
-# Sistema de Recomendación y API FastAPI
+# Sistema de Recomendación y API con FastAPI
 
-Este proyecto implementa una API desarrollada con FastAPI que proporciona información sobre videojuegos, incluyendo recomendaciones basadas en el análisis de reseñas de usuarios. Utiliza varios conjuntos de datos para ofrecer diferentes endpoints que permiten acceder a información específica sobre desarrolladores, usuarios, géneros de juegos, y recomendaciones de juegos.
+Bienvenido al repositorio del Sistema de Recomendación y API desarrollado con FastAPI. Este proyecto ofrece una solución integral para la recomendación de videojuegos basada en análisis de reseñas y preferencias de usuarios, aprovechando técnicas avanzadas de procesamiento de datos y algoritmos de recomendación.
 
-## Características
+## Características Principales
 
-- **Información del Desarrollador**: Retorna información sobre juegos desarrollados por una compañía específica, incluyendo cantidad de ítems y porcentaje de contenido gratuito por año.
-- **Datos de Usuario**: Proporciona información sobre el gasto total de un usuario, porcentaje de recomendaciones y cantidad de ítems adquiridos.
-- **Usuario por Género**: Muestra el usuario con más horas jugadas por género y una lista de horas jugadas por año de lanzamiento.
-- **Mejores Desarrolladores por Año**: Lista los top 3 desarrolladores con más reseñas positivas en un año específico.
-- **Análisis de Reseñas por Desarrollador**: Ofrece un análisis de sentimiento de las reseñas (positivas y negativas) asociadas a los juegos de un desarrollador.
-- **Recomendaciones de Juegos**: Basado en un modelo de recomendación ítem-ítem, sugiere juegos similares a uno dado.
+- **Análisis Detallado por Desarrollador**: Obtén datos agregados sobre juegos por desarrollador, incluyendo la cantidad de ítems y el porcentaje de contenido gratuito.
+- **Información Personalizada para Usuarios**: Accede a un resumen del gasto total, porcentaje de recomendaciones y cantidad de ítems por usuario.
+- **Recomendaciones de Juegos**: Utiliza modelos de recomendación ítem-ítem y usuario-usuario para descubrir juegos similares o recomendados.
+- **Insights por Género y Desarrollador**: Explora los géneros más populares y los desarrolladores con las mejores reseñas.
+- **Documentación Interactiva**: FastAPI proporciona una documentación automática e interactiva para explorar todos los endpoints disponibles.
 
-## Instalación
+## Tecnologías Utilizadas
 
-Este proyecto está desplegado y accesible en línea, por lo que no es necesario instalar nada localmente para interactuar con la API. Puedes acceder a la documentación interactiva y probar los endpoints directamente en la siguiente URL:
+- **FastAPI**: Para la creación de endpoints RESTful de alta eficiencia.
+- **Pandas**: Para el manejo y procesamiento de datos.
+- **Scikit-learn**: Para calcular la similitud de coseno en los modelos de recomendación.
+- **Uvicorn**: Como servidor ASGI para servir la aplicación.
 
-- **URL del Despliegue**: [https://pi01-usersromans1.onrender.com/docs](https://pi01-usersromans1.onrender.com/docs)
+## Despliegue
+
+Este proyecto está desplegado y puede ser accedido en [https://pi01-usersromans1.onrender.com/docs](https://pi01-usersromans1.onrender.com/docs), donde encontrarás la documentación interactiva generada por FastAPI.
+
+## Instalación Local
+
+Para ejecutar este proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio:
+git clone https://github.com/usersromans/PI01.git
+
+2. Instala las dependencias:
+pip install fastapi uvicorn pandas scikit-learn
+
+3. Inicia el servidor:
+uvicorn main:app --reload
+
 
 ## Uso
 
-Accede a la documentación interactiva de la API en el enlace anterior para una guía completa sobre cómo usar cada endpoint.
+Una vez que el servidor está corriendo, puedes explorar los endpoints disponibles a través de la documentación interactiva de FastAPI en `/docs`.
 
-## Video Explicativo
+## Video Demostrativo
 
-Para una introducción y demostración del proyecto, mira nuestro video en YouTube:
+Para una guía detallada sobre cómo utilizar este sistema, por favor, visita nuestro video explicativo en YouTube: [Enlace al Video](<URL_DEL_VIDEO>).
 
-- **Enlace al Video**: [Pon aquí el enlace a YouTube](#)
+## Contribuciones
 
-## Notas Adicionales
+Las contribuciones son siempre bienvenidas. Si tienes alguna sugerencia para mejorar este proyecto, no dudes en abrir un Pull Request o crear un Issue.
 
-- Este proyecto es un MVP (Producto Mínimo Viable) y puede requerir ajustes adicionales para producción.
-- Las contribuciones son bienvenidas. Por favor, envía un Pull Request o abre un Issue para discutir los cambios o mejoras propuestas.
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Para más detalles, ver el archivo [LICENSE](LICENSE).
+
